@@ -2,6 +2,22 @@
   "version": 3,
   "targets": {
     "MonoAndroid,Version=v13.0": {
+      "Plugin.BLE/3.0.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid13.0/Plugin.BLE.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid13.0/Plugin.BLE.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "System.Numerics.Vectors/4.5.0": {
         "type": "package",
         "compile": {
@@ -1007,6 +1023,59 @@
     }
   },
   "libraries": {
+    "Plugin.BLE/3.0.0": {
+      "sha512": "9SXMCmmCGW1FfOquBc6oBJuR3G0M9L2Qfovr9zoIEf799OvdrxFtrgs4KpYJbbAOyhC3EULG9x/1zEK9S3y1HA==",
+      "type": "package",
+      "path": "plugin.ble/3.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "icon_small.png",
+        "lib/monoandroid13.0/Plugin.BLE.dll",
+        "lib/monoandroid13.0/Plugin.BLE.pdb",
+        "lib/monoandroid13.0/Plugin.BLE.xml",
+        "lib/net6.0-android33.0/Plugin.BLE.dll",
+        "lib/net6.0-android33.0/Plugin.BLE.pdb",
+        "lib/net6.0-android33.0/Plugin.BLE.xml",
+        "lib/net6.0-ios16.1/Plugin.BLE.dll",
+        "lib/net6.0-ios16.1/Plugin.BLE.pdb",
+        "lib/net6.0-ios16.1/Plugin.BLE.xml",
+        "lib/net6.0-maccatalyst16.1/Plugin.BLE.dll",
+        "lib/net6.0-maccatalyst16.1/Plugin.BLE.pdb",
+        "lib/net6.0-maccatalyst16.1/Plugin.BLE.xml",
+        "lib/net6.0-windows10.0.19041/Plugin.BLE.dll",
+        "lib/net6.0-windows10.0.19041/Plugin.BLE.pdb",
+        "lib/net6.0-windows10.0.19041/Plugin.BLE.xml",
+        "lib/net7.0-android33.0/Plugin.BLE.dll",
+        "lib/net7.0-android33.0/Plugin.BLE.pdb",
+        "lib/net7.0-android33.0/Plugin.BLE.xml",
+        "lib/net7.0-ios16.1/Plugin.BLE.dll",
+        "lib/net7.0-ios16.1/Plugin.BLE.pdb",
+        "lib/net7.0-ios16.1/Plugin.BLE.xml",
+        "lib/net7.0-maccatalyst16.1/Plugin.BLE.dll",
+        "lib/net7.0-maccatalyst16.1/Plugin.BLE.pdb",
+        "lib/net7.0-maccatalyst16.1/Plugin.BLE.xml",
+        "lib/net7.0-windows10.0.19041/Plugin.BLE.dll",
+        "lib/net7.0-windows10.0.19041/Plugin.BLE.pdb",
+        "lib/net7.0-windows10.0.19041/Plugin.BLE.xml",
+        "lib/netstandard2.0/Plugin.BLE.dll",
+        "lib/netstandard2.0/Plugin.BLE.pdb",
+        "lib/netstandard2.0/Plugin.BLE.xml",
+        "lib/uap10.0.17763/Plugin.BLE.dll",
+        "lib/uap10.0.17763/Plugin.BLE.pdb",
+        "lib/uap10.0.17763/Plugin.BLE.pri",
+        "lib/uap10.0.17763/Plugin.BLE.xml",
+        "lib/xamarinios10/Plugin.BLE.dll",
+        "lib/xamarinios10/Plugin.BLE.pdb",
+        "lib/xamarinios10/Plugin.BLE.xml",
+        "lib/xamarinmac20/Plugin.BLE.dll",
+        "lib/xamarinmac20/Plugin.BLE.pdb",
+        "lib/xamarinmac20/Plugin.BLE.xml",
+        "plugin.ble.3.0.0.nupkg.sha512",
+        "plugin.ble.nuspec"
+      ]
+    },
     "System.Numerics.Vectors/4.5.0": {
       "sha512": "QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
       "type": "package",
@@ -1848,6 +1917,7 @@
   },
   "projectFileDependencyGroups": {
     "MonoAndroid,Version=v13.0": [
+      "Plugin.BLE >= 3.0.0",
       "Xamarin.AndroidX.AppCompat >= 1.2.0.5",
       "Xamarin.Essentials >= 1.6.1",
       "Xamarin.Google.Android.Material >= 1.0.0.1"
@@ -1891,6 +1961,10 @@
     "frameworks": {
       "monoandroid13.0": {
         "dependencies": {
+          "Plugin.BLE": {
+            "target": "Package",
+            "version": "[3.0.0, )"
+          },
           "Xamarin.AndroidX.AppCompat": {
             "target": "Package",
             "version": "[1.2.0.5, )"
