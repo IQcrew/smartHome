@@ -28,3 +28,4 @@ resources;obj\Debug\130\res\values\strings.xml
 resources;obj\Debug\130\res\values\styles.xml
 string;obj\Debug\130\res\values\strings.xml
 style;obj\Debug\130\res\values\styles.xml
+TextView;obj\Debug\130\res\layout\activity_main.xml

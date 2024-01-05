@@ -34,6 +34,13 @@
         android:id="@+id/button2"
         android:layout_gravity="center"
         android:layout_marginTop="138.0dp" />
+    <TextView
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/textView1"
+        android:layout_marginTop="75.5dp" />
 
 
 

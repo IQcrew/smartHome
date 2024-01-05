@@ -13,6 +13,7 @@ using System.Linq;
 using Xamarin.Essentials;
 using Android;
 using Java.Util;
+using System.Threading;
 
 namespace SmartHomeApp
 {
@@ -21,7 +22,9 @@ namespace SmartHomeApp
     {
         private Button btn;
         private Button SendButton;
+        private TextView tvTemp;
         private BluetoothSocket _socket = null;
+        Thread bluetoothReadThread;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -35,9 +38,12 @@ namespace SmartHomeApp
             btn = FindViewById<Button>(Resource.Id.button1);
             btn.Click += OnButtonClicked;
 
+            tvTemp = FindViewById<TextView>(Resource.Id.textView1);
+
             SendButton = FindViewById<Button>(Resource.Id.button2);
             SendButton.Click += SendInformationOnClick;
             ConnectToEsp();
+            StartBluetoothReadingThread();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -90,14 +96,58 @@ namespace SmartHomeApp
             }
         }
 
+        private void StartBluetoothReadingThread()
+        {
+            
+
+            // Start a new thread to read Bluetooth messages
+            bluetoothReadThread = new System.Threading.Thread(() =>
+            {
+                while (_socket != null)
+                {
+                    ReadBluetoothMessage();
+                    System.Threading.Thread.Sleep(100); // Adjust the delay as needed
+                }
+            });
+
+            bluetoothReadThread.Start();
+        }
+
+        private void ReadBluetoothMessage()
+        {
+            if (_socket.IsConnected)
+            {
+                try
+                {
+                    System.IO.Stream isStream = _socket.InputStream;
+                    byte[] buffer = new byte[1024];  
+                    int bytesRead = isStream.Read(buffer, 0, buffer.Length);
+
+                    if (bytesRead > 0)
+                    {
+                        string receivedMessage = System.Text.Encoding.ASCII.GetString(buffer, 0, bytesRead);
+                        // Process the receivedMessage as needed
+                        receivedMessage = receivedMessage.Replace("\n", "").Replace("\r", "");
+                        tvTemp.Text = receivedMessage;
+                    }
+                }
+                catch (Exception e)
+                {
+
+                }
+            }
+        }
         private void ConnectToEsp()
         {
             BluetoothAdapter bluetoothAdapter = BluetoothAdapter.DefaultAdapter;
-
-            if (bluetoothAdapter == null || !bluetoothAdapter.IsEnabled)
+            if(bluetoothAdapter == null)
             {
-
                 return;
+            }
+            if ( !bluetoothAdapter.IsEnabled)
+            {
+                bluetoothAdapter.Enable();
+                
             }
 
             string desiredAlias = "ESP32_BTSerial";
@@ -123,6 +173,11 @@ namespace SmartHomeApp
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
-        
+        protected override void OnDestroy()
+        {
+            bluetoothReadThread.Abort();
+            base.OnDestroy();
+            
+        }
     }
 }
