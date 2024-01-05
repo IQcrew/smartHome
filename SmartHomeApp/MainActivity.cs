@@ -8,6 +8,11 @@ using AndroidX.AppCompat.App;
 using Google.Android.Material.FloatingActionButton;
 using Google.Android.Material.Snackbar;
 using Android.Widget;
+using Android.Bluetooth;
+using System.Linq;
+using Xamarin.Essentials;
+using Android;
+using Java.Util;
 
 namespace SmartHomeApp
 {
@@ -15,6 +20,9 @@ namespace SmartHomeApp
     public class MainActivity : AppCompatActivity
     {
         private Button btn;
+        private Button SendButton;
+        private BluetoothSocket _socket = null;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -27,6 +35,9 @@ namespace SmartHomeApp
             btn = FindViewById<Button>(Resource.Id.button1);
             btn.Click += OnButtonClicked;
 
+            SendButton = FindViewById<Button>(Resource.Id.button2);
+            SendButton.Click += SendInformationOnClick;
+            ConnectToEsp();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -54,15 +65,64 @@ namespace SmartHomeApp
         }
         private void OnButtonClicked(object sender, EventArgs eventArgs)
         {
-            return;
+
+            
+        }
+        public void SendInformationOnClick(object sender, EventArgs e)
+        {
+            SendSerialMessage("TEST");
+        }
+        public void SendSerialMessage(string message)
+        {
+
+            if (_socket != null && _socket.IsConnected)
+            {
+                try
+                {
+                    System.IO.Stream os = _socket.OutputStream;
+                    byte[] data = System.Text.Encoding.ASCII.GetBytes(message+"\n");
+                    os.Write(data);
+                }
+                catch (Exception e)
+                {
+                    ConnectToEsp();
+                }
+            }
         }
 
+        private void ConnectToEsp()
+        {
+            BluetoothAdapter bluetoothAdapter = BluetoothAdapter.DefaultAdapter;
 
+            if (bluetoothAdapter == null || !bluetoothAdapter.IsEnabled)
+            {
+
+                return;
+            }
+
+            string desiredAlias = "ESP32_BTSerial";
+
+            var pairedDevices = bluetoothAdapter.BondedDevices;
+            _socket = null;
+            foreach (BluetoothDevice device in pairedDevices)
+            {
+                if (device.Alias == desiredAlias)
+                {
+                    UUID uuid = UUID.FromString("00001101-0000-1000-8000-00805F9B34FB"); // Standard SerialPortService ID
+                    _socket = device.CreateRfcommSocketToServiceRecord(uuid);
+
+                    // Establish the Bluetooth connection
+                    _socket.Connect();
+                    break;
+                }
+            }
+        }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
-	}
+        
+    }
 }
