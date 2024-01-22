@@ -6,6 +6,6 @@
     <ActiveDebugProfile>Xiaomi 2201117TG %28Android 12.0 - API 31%29</ActiveDebugProfile>
     <DefaultDevice>galaxy_nexus_-_api_33</DefaultDevice>
     <AndroidDesignerPreferredTheme>AppTheme</AndroidDesignerPreferredTheme>
-    <AndroidDesignerPreferredDevice>4.65in 720p %28Galaxy Nexus%29</AndroidDesignerPreferredDevice>
+    <AndroidDesignerPreferredDevice>7in WSVGA %28Tablet%29</AndroidDesignerPreferredDevice>
   </PropertyGroup>
 </Project>

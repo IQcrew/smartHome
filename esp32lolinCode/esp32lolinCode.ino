@@ -32,7 +32,7 @@ char ledStripMode = 'a'; // off, color, animation
 int Red = 0;
 int Green = 255;
 int Blue = 0;
-int ledDensity = 2;
+int ledDensity = 1;
 #include <math.h> //animation 1
 unsigned long lastTime = 0;  
 int animationPos[3] = {0,1,2};
@@ -58,8 +58,11 @@ int ledColor = 2;
     {255, 192, 128},  // Light Orange
     {192, 128, 255},  // Light Purple
     {128, 255, 192}   // Light Teal
-    // Add more colors as needed
   };
+
+  //communication 
+#include <BluetoothSerial.h>
+BluetoothSerial SerialBT;
 
 void setup() {
   Serial.begin(115200);
@@ -72,14 +75,33 @@ void setup() {
   digitalWrite(PIXEL_POWERING_PIN, HIGH);
   NeoPixel.begin();
   randomSeed(analogRead(19));
+  SerialBT.begin("ESP32_BTSerial"); // Bluetooth device name
   Serial.println("setuped succesfully");
 }
 
 void loop() {
+  //message format: (char)powering_(char)outsidelight_(char)stripMode_voltage_temperature_humidity_ledDensity_Red_Green_Blue#
+  String sendMessage = String(powerMode) + "_" + String(movementLightStatus) + "_" + String(ledStripMode) + "_" + String(in_voltage) + "_" + String(temperature) + "_" + String(humidity) + "_" + String(ledDensity) + "_" + String(Red) + "_" + String(Green) + "_" + String(Blue) + "#";
+SerialBT.print(sendMessage);
+SerialBT.print(sendMessage);
+SerialBT.print(sendMessage);
   power();
   readDht11();
   movementLight();
   neopixelStrip();
+if (SerialBT.available()) {
+    String incomingString = SerialBT.readStringUntil('\n');
+
+    //message format: (char)powering_(char)outsidelight_(char)stripMode_ledDensity_Red_Green_Blue#
+    // Split the incomingString by #
+    int hashIndex = incomingString.indexOf('#');
+    if (hashIndex != -1) {
+        String firstPart = incomingString.substring(0, hashIndex);
+        // Now, you can process the firstPart
+        sscanf(firstPart.c_str(), "%c_%c_%c_%d_%d_%d_%d", &powerMode, &movementLightStatus, &ledStripMode, &ledDensity, &Red, &Green, &Blue);
+    }
+}
+
   Serial.println("loop succesfully");
 }
 

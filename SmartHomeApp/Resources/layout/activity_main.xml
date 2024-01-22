@@ -24,16 +24,27 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="69.5dp">
+        android:layout_marginTop="66.0dp">
 
-<LinearLayout
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="20dp">
+        <TextView
+            android:id="@+id/voltageTextView"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Napätie na batériach: 0.00V"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="52.0dp" 
+             />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0.5dp">
 
             <TextView
-                android:text="Large Text 1"
+                android:text=""
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -46,14 +57,14 @@
                 android:layout_marginLeft="20dp"
                 android:textColor="#FFFFFF" />
 
-    <!-- Spacer View -->
-    <View
-        android:layout_width="8dp"
-        android:layout_height="0dp"
-        android:layout_weight="0" />
+            <!-- Spacer View -->
+            <View
+                android:layout_width="8dp"
+                android:layout_height="0dp"
+                android:layout_weight="0" />
 
             <TextView
-                android:text="Large Text 2"
+                android:text=""
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -65,14 +76,15 @@
                 android:background="@drawable/text_view_background"
                 android:padding="16dp"
                 android:textColor="#FFFFFF" />
-</LinearLayout>
+        </LinearLayout>
 
 
         <LinearLayout
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="20dp">
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
             <TextView
                 android:text="Napájanie: "
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -91,13 +103,13 @@
                 android:layout_marginLeft="117.5dp" 
              />
 
-            </LinearLayout>
+        </LinearLayout>
 
         <LinearLayout
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="20dp">
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
             <TextView
                 android:text="Vonkajšie osvetlenie: "
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -116,7 +128,7 @@
                 android:layout_marginRight="0.0dp"
                 android:layout_marginLeft="26.5dp" 
              />
-                </LinearLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -142,6 +154,70 @@
                 android:layout_marginRight="0.5dp" 
              />
         </LinearLayout>
+
+
+        <TextView
+            android:text="Red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0000" />
+
+        <SeekBar
+            android:id="@+id/redSeekBar"
+            android:layout_width="333.0dp"
+            android:layout_height="wrap_content"
+            android:max="255"
+            android:layout_marginLeft="25.0dp" />
+
+        <TextView
+            android:text="Green"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#00FF00" />
+
+        <SeekBar
+            android:id="@+id/greenSeekBar"
+            android:layout_width="333.0dp"
+            android:layout_height="wrap_content"
+            android:max="255"
+            android:layout_marginLeft="25dp" />
+
+        <TextView
+            android:text="Blue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#0000FF" />
+
+        <SeekBar
+            android:id="@+id/blueSeekBar"
+            android:layout_width="333.0dp"
+            android:layout_height="wrap_content"
+            android:max="255"
+            android:layout_marginLeft="25dp" />
+        <View
+            android:id="@+id/colorPreview"
+            android:layout_width="122.0dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:background="#000000" />
+
+            <TextView
+        android:id="@+id/selectedNumberTextView"
+        android:text="Hustota LED: 1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" />
+
+        <SeekBar
+            android:id="@+id/numberSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="4"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="50.0dp"
+            android:layout_marginRight="50.0dp" />
+
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

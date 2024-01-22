@@ -39,6 +39,7 @@ resources;obj\Debug\130\res\values\dimens.xml
 resources;obj\Debug\130\res\values\ic_launcher_background.xml
 resources;obj\Debug\130\res\values\strings.xml
 resources;obj\Debug\130\res\values\styles.xml
+SeekBar;obj\Debug\130\res\layout\activity_main.xml
 shape;obj\Debug\130\res\drawable\text_view_background.xml
 solid;obj\Debug\130\res\drawable\text_view_background.xml
 string;C:\IT\Programovanie_amater\projects\smartHome\SmartHomeApp\obj\Debug\130\lp\1\jl\res\values\strings.xml
