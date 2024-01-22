@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "0xxAv53NcBJDle1nabcpEr5238/8uXQC4Rp1M0AKVccyD5eL2rsFCV36K//xQM+H8RP8qMXI6jIn+6T4CXJPGQ==",
+  "dgSpecHash": "yj+XZI+9FoKGNf3IzpIoOcdPgHBCHD2zbr550ifGwjYrMUJX6NMKmb5Oo1gXIzniJt4wnox/A/BnYFzYQ+mjSA==",
   "success": true,
   "projectFilePath": "C:\\IT\\Programovanie_amater\\projects\\smartHome\\SmartHomeApp\\SmartHomeApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tobol\\.nuget\\packages\\plugin.ble\\3.0.0\\plugin.ble.3.0.0.nupkg.sha512",
+    "C:\\Users\\tobol\\.nuget\\packages\\syncfusion.licensing\\24.1.46\\syncfusion.licensing.24.1.46.nupkg.sha512",
+    "C:\\Users\\tobol\\.nuget\\packages\\syncfusion.xamarin.sfcombobox.android\\24.1.46\\syncfusion.xamarin.sfcombobox.android.24.1.46.nupkg.sha512",
     "C:\\Users\\tobol\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\tobol\\.nuget\\packages\\xamarin.androidx.activity\\1.1.0.3\\xamarin.androidx.activity.1.1.0.3.nupkg.sha512",
     "C:\\Users\\tobol\\.nuget\\packages\\xamarin.androidx.annotation\\1.1.0.7\\xamarin.androidx.annotation.1.1.0.7.nupkg.sha512",

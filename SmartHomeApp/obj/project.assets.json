@@ -18,6 +18,31 @@
           }
         }
       },
+      "Syncfusion.Licensing/24.1.46": {
+        "type": "package",
+        "compile": {
+          "lib/MonoAndroid90/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid90/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.SfComboBox.Android/24.1.46": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "24.1.46"
+        },
+        "compile": {
+          "lib/MonoAndroid10.0/Syncfusion.SfComboBox.Android.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/MonoAndroid10.0/Syncfusion.SfComboBox.Android.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.Numerics.Vectors/4.5.0": {
         "type": "package",
         "compile": {
@@ -1076,6 +1101,48 @@
         "plugin.ble.nuspec"
       ]
     },
+    "Syncfusion.Licensing/24.1.46": {
+      "sha512": "+XLF6WYosprxq8nSv4Dflk1qG5s8QkZhk3A3SrDMUQLfaAuUXgo7kXYjo3nJYKolkEeKgWK+opwQuEpz2hjjqQ==",
+      "type": "package",
+      "path": "syncfusion.licensing/24.1.46",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/MonoAndroid90/Syncfusion.Licensing.dll",
+        "lib/Xamarin.Mac/Syncfusion.Licensing.dll",
+        "lib/Xamarin.iOS10/Syncfusion.Licensing.dll",
+        "lib/net40/Syncfusion.Licensing.dll",
+        "lib/net45/Syncfusion.Licensing.dll",
+        "lib/net451/Syncfusion.Licensing.dll",
+        "lib/net46/Syncfusion.Licensing.dll",
+        "lib/net6.0/Syncfusion.Licensing.dll",
+        "lib/net7.0/Syncfusion.Licensing.dll",
+        "lib/net8.0/Syncfusion.Licensing.dll",
+        "lib/netstandard2.0/Syncfusion.Licensing.dll",
+        "lib/uap10.0/Syncfusion.Licensing.dll",
+        "syncfusion.licensing.24.1.46.nupkg.sha512",
+        "syncfusion.licensing.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.Xamarin.SfComboBox.Android/24.1.46": {
+      "sha512": "9nEkaLRr37l/ONe/56wdFTM71Fserbq2t4eBJg1vhiHCrvyIKeD5rQSpqYNIWn73pLDGH/5E0WeZx7+Y5ybq8g==",
+      "type": "package",
+      "path": "syncfusion.xamarin.sfcombobox.android/24.1.46",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/MonoAndroid10.0/Syncfusion.SfComboBox.Android.dll",
+        "lib/MonoAndroid10.0/Syncfusion.SfComboBox.Android.xml",
+        "syncfusion.xamarin.sfcombobox.android.24.1.46.nupkg.sha512",
+        "syncfusion.xamarin.sfcombobox.android.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
     "System.Numerics.Vectors/4.5.0": {
       "sha512": "QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
       "type": "package",
@@ -1918,6 +1985,7 @@
   "projectFileDependencyGroups": {
     "MonoAndroid,Version=v13.0": [
       "Plugin.BLE >= 3.0.0",
+      "Syncfusion.Xamarin.SfComboBox.Android >= 24.1.46",
       "Xamarin.AndroidX.AppCompat >= 1.2.0.5",
       "Xamarin.Essentials >= 1.6.1",
       "Xamarin.Google.Android.Material >= 1.0.0.1"
@@ -1964,6 +2032,10 @@
           "Plugin.BLE": {
             "target": "Package",
             "version": "[3.0.0, )"
+          },
+          "Syncfusion.Xamarin.SfComboBox.Android": {
+            "target": "Package",
+            "version": "[24.1.46, )"
           },
           "Xamarin.AndroidX.AppCompat": {
             "target": "Package",

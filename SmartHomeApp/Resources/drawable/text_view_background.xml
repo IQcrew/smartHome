@@ -1,0 +1,19 @@
+﻿<shape xmlns:android="http://schemas.android.com/apk/res/android">
+	<solid android:color="#262626" />
+	<!-- Change color to your desired background color -->
+	<corners android:radius="10dp" />
+	<!-- Change radius to adjust the roundness of the corners -->
+	<padding android:left="16dp"
+             android:top="16dp"
+             android:right="16dp"
+             android:bottom="16dp" />
+	<!-- Add desired padding values in dp for left, top, right, and bottom -->
+	<margin android:left="8dp"
+            android:top="8dp"
+            android:right="8dp"
+            android:bottom="8dp" />
+	<!-- Add desired margin values in dp for left, top, right, and bottom -->
+	<stroke
+        android:color="#141414"
+        android:width="3px" />
+</shape>

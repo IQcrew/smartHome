@@ -14,20 +14,38 @@ using Xamarin.Essentials;
 using Android;
 using Java.Util;
 using System.Threading;
+using Syncfusion.Android.ComboBox;
+using System.Collections.Generic;
+using Syncfusion;
 
 namespace SmartHomeApp
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-        private Button btn;
-        private Button SendButton;
-        private TextView tvTemp;
+        private TextView temperature;
+        private TextView humidity;
         private BluetoothSocket _socket = null;
         Thread bluetoothReadThread;
+        SfComboBox powerCB;
+        SfComboBox lightCB;
+        SfComboBox neoPixelCB;
+        List<string> powerOptions = new List<string>
+        {  
+            "Off",
+            "On",
+            "Auto",
+        };
+        List<string> neoPixelOptions = new List<string>
+        {
+            "Off",
+            "RGB",
+            "Animation",
+        };
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
@@ -35,15 +53,24 @@ namespace SmartHomeApp
             AndroidX.AppCompat.Widget.Toolbar toolbar = FindViewById<AndroidX.AppCompat.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
 
-            btn = FindViewById<Button>(Resource.Id.button1);
-            btn.Click += OnButtonClicked;
 
-            tvTemp = FindViewById<TextView>(Resource.Id.textView1);
+            temperature = FindViewById<TextView>(Resource.Id.textView1);
+            humidity = FindViewById<TextView>(Resource.Id.textView2);
 
-            SendButton = FindViewById<Button>(Resource.Id.button2);
-            SendButton.Click += SendInformationOnClick;
-            ConnectToEsp();
-            StartBluetoothReadingThread();
+            powerCB = FindViewById<SfComboBox>(Resource.Id.sfComboBox1);
+            powerCB.DataSource = powerOptions;
+            powerCB.SelectedItem = powerOptions[2];
+
+            lightCB = FindViewById<SfComboBox>(Resource.Id.sfComboBox2);
+            lightCB.DataSource = powerOptions;
+            lightCB.SelectedItem = powerOptions[2];
+
+            neoPixelCB = FindViewById<SfComboBox>(Resource.Id.sfComboBox3);
+            neoPixelCB.DataSource = powerOptions;
+            neoPixelCB.SelectedItem = neoPixelOptions[0];
+
+            //ConnectToEsp();
+            //StartBluetoothReadingThread();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -68,11 +95,6 @@ namespace SmartHomeApp
             View view = (View) sender;
             Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
                 .SetAction("Action", (View.IOnClickListener)null).Show();
-        }
-        private void OnButtonClicked(object sender, EventArgs eventArgs)
-        {
-
-            
         }
         public void SendInformationOnClick(object sender, EventArgs e)
         {
@@ -128,7 +150,6 @@ namespace SmartHomeApp
                         string receivedMessage = System.Text.Encoding.ASCII.GetString(buffer, 0, bytesRead);
                         // Process the receivedMessage as needed
                         receivedMessage = receivedMessage.Replace("\n", "").Replace("\r", "");
-                        tvTemp.Text = receivedMessage;
                     }
                 }
                 catch (Exception e)

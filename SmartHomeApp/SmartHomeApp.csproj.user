@@ -4,8 +4,8 @@
     <SelectedDevice>Xiaomi 2201117TG</SelectedDevice>
     <SelectedPlatformGroup>PhysicalDevice</SelectedPlatformGroup>
     <ActiveDebugProfile>Xiaomi 2201117TG %28Android 12.0 - API 31%29</ActiveDebugProfile>
-    <DefaultDevice>pixel_5_-_api_33</DefaultDevice>
+    <DefaultDevice>galaxy_nexus_-_api_33</DefaultDevice>
     <AndroidDesignerPreferredTheme>AppTheme</AndroidDesignerPreferredTheme>
-    <AndroidDesignerPreferredDevice>Nexus 4</AndroidDesignerPreferredDevice>
+    <AndroidDesignerPreferredDevice>4.65in 720p %28Galaxy Nexus%29</AndroidDesignerPreferredDevice>
   </PropertyGroup>
 </Project>

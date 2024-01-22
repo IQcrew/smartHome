@@ -4,6 +4,8 @@ public class MonoPackageManager_Resources {
 		/* We need to ensure that "SmartHomeApp.dll" comes first in this list. */
 		"SmartHomeApp.dll",
 		"Plugin.BLE.dll",
+		"Syncfusion.Licensing.dll",
+		"Syncfusion.SfComboBox.Android.dll",
 		"Xamarin.AndroidX.Activity.dll",
 		"Xamarin.AndroidX.Annotation.dll",
 		"Xamarin.AndroidX.AppCompat.AppCompatResources.dll",
