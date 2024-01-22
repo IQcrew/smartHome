@@ -28,11 +28,11 @@ int adc_value = 0;
 #define NUM_PIXELS 29     // The number of LEDs (pixels) on NeoPixel LED strip
 #define PIXEL_POWERING_PIN 33
 Adafruit_NeoPixel NeoPixel(NUM_PIXELS, PIN_NEO_PIXEL, NEO_GRB + NEO_KHZ800);
-char ledStripMode = 'a'; // off, color, animation 
+char ledStripMode = 'c'; // off, color, animation 
 int Red = 0;
 int Green = 255;
 int Blue = 0;
-int ledDensity = 1;
+int ledDensity = 2;
 #include <math.h> //animation 1
 unsigned long lastTime = 0;  
 int animationPos[3] = {0,1,2};
@@ -91,18 +91,24 @@ SerialBT.print(sendMessage);
   neopixelStrip();
 if (SerialBT.available()) {
     String incomingString = SerialBT.readStringUntil('\n');
-
+    SerialBT.flush();
+    Serial.println(incomingString);
     //message format: (char)powering_(char)outsidelight_(char)stripMode_ledDensity_Red_Green_Blue#
     // Split the incomingString by #
     int hashIndex = incomingString.indexOf('#');
+    Serial.println(hashIndex);
     if (hashIndex != -1) {
         String firstPart = incomingString.substring(0, hashIndex);
+        Serial.println(firstPart);
         // Now, you can process the firstPart
         sscanf(firstPart.c_str(), "%c_%c_%c_%d_%d_%d_%d", &powerMode, &movementLightStatus, &ledStripMode, &ledDensity, &Red, &Green, &Blue);
+        Serial.println(ledStripMode);
+        Serial.println(Green);
+
     }
 }
 
-  Serial.println("loop succesfully");
+  //Serial.println("loop succesfully");
 }
 
 void power(){
@@ -149,6 +155,7 @@ void neopixelStrip(){
   }
   switch (ledStripMode) {
     case 'a':
+    digitalWrite(PIXEL_POWERING_PIN, HIGH);
       NeoPixel.clear();
 
       for(int i = 0; i<3; i++){
@@ -157,6 +164,7 @@ void neopixelStrip(){
       NeoPixel.show();   
       break;
     case 'c':
+    digitalWrite(PIXEL_POWERING_PIN, HIGH);
       NeoPixel.clear();
       for (int pixel = 0; pixel < NUM_PIXELS; pixel+=ledDensity) {        
         NeoPixel.setPixelColor(pixel, NeoPixel.Color(Red, Green, Blue));  
@@ -164,6 +172,8 @@ void neopixelStrip(){
         NeoPixel.show();                                       
       break;
     default: //off
+    NeoPixel.clear();
+    NeoPixel.show(); 
       digitalWrite(PIXEL_POWERING_PIN, LOW);
       break;
  }

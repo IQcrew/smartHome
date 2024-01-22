@@ -166,7 +166,7 @@ namespace SmartHomeApp
                 {
                     if(loadedValuesFromEsp)
                         sendMessage();
-                    System.Threading.Thread.Sleep(10000); // Adjust the delay as needed
+                    System.Threading.Thread.Sleep(100); // Adjust the delay as needed
                 }
             });
             bluetoothSendThread.Start();
@@ -283,7 +283,7 @@ namespace SmartHomeApp
                     break;
             }
             string li;
-            switch (powerCB.SelectedItem)
+            switch (lightCB.SelectedItem)
             {
                 case "On":
                     li = "h";
@@ -296,7 +296,7 @@ namespace SmartHomeApp
                     break;
             }
             string np;
-            switch (powerCB.SelectedItem)
+            switch (neoPixelCB.SelectedItem)
             {
                 case "RGB":
                     np = "c";
