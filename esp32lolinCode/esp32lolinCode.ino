@@ -85,30 +85,30 @@ void loop() {
 SerialBT.print(sendMessage);
 SerialBT.print(sendMessage);
 SerialBT.print(sendMessage);
+  Serial.println("send succesfully");
   power();
+  Serial.println("power succesfully");
   readDht11();
+  Serial.println("dht11 succesfully");
   movementLight();
+  Serial.println("light succesfully");
   neopixelStrip();
+  Serial.println("neoPixel succesfully");
 if (SerialBT.available()) {
     String incomingString = SerialBT.readStringUntil('\n');
     SerialBT.flush();
-    Serial.println(incomingString);
     //message format: (char)powering_(char)outsidelight_(char)stripMode_ledDensity_Red_Green_Blue#
     // Split the incomingString by #
     int hashIndex = incomingString.indexOf('#');
-    Serial.println(hashIndex);
     if (hashIndex != -1) {
         String firstPart = incomingString.substring(0, hashIndex);
-        Serial.println(firstPart);
         // Now, you can process the firstPart
         sscanf(firstPart.c_str(), "%c_%c_%c_%d_%d_%d_%d", &powerMode, &movementLightStatus, &ledStripMode, &ledDensity, &Red, &Green, &Blue);
-        Serial.println(ledStripMode);
-        Serial.println(Green);
 
     }
 }
 
-  //Serial.println("loop succesfully");
+  Serial.println("loop succesfully");
 }
 
 void power(){

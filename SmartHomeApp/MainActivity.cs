@@ -308,7 +308,7 @@ namespace SmartHomeApp
                     np = "o";
                     break;
             }
-            string messageForEsp = $"{pw}_{li}_{np}_{numberSeekBar.Progress}_{redSeekBar.Progress}_{greenSeekBar.Progress}_{blueSeekBar.Progress}#\n";
+            string messageForEsp = $"{pw}_{li}_{np}_{numberSeekBar.Progress+1}_{redSeekBar.Progress}_{greenSeekBar.Progress}_{blueSeekBar.Progress}#\n";
 
             //message format: (char)powering_(char)outsidelight_(char)stripMode_ledDensity_Red_Green_Blue#
             SendSerialMessage(messageForEsp);
