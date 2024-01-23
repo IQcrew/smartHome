@@ -45,7 +45,7 @@
 
             <TextView
                 android:text=""
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView1"
@@ -65,7 +65,7 @@
 
             <TextView
                 android:text=""
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView2"

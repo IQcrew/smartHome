@@ -254,8 +254,8 @@ namespace SmartHomeApp
                             loadedValuesFromEsp = true;
                         }
                             electricityCurrent.Text = $"Napätie na batériach: {messageSplited[3]}V";
-                            temperature.Text = $"{messageSplited[4]}°C";
-                            humidity.Text = $"{messageSplited[5]}KPa";
+                            temperature.Text = $"Teplota: {messageSplited[4]}°C";
+                            humidity.Text = $"Vlchkosť: {messageSplited[5]}%";
                         
 
                     }

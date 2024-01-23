@@ -28,7 +28,7 @@ int adc_value = 0;
 #define NUM_PIXELS 29     // The number of LEDs (pixels) on NeoPixel LED strip
 #define PIXEL_POWERING_PIN 33
 Adafruit_NeoPixel NeoPixel(NUM_PIXELS, PIN_NEO_PIXEL, NEO_GRB + NEO_KHZ800);
-char ledStripMode = 'c'; // off, color, animation 
+char ledStripMode = 'o'; // off, color, animation 
 int Red = 0;
 int Green = 255;
 int Blue = 0;
@@ -38,25 +38,25 @@ unsigned long lastTime = 0;
 int animationPos[3] = {0,1,2};
 int ledColor = 2;
   int colors[20][3] = {
-    {255, 0, 0},    // Red
-    {0, 255, 0},    // Green
-    {0, 0, 255},    // Blue
-    {255, 255, 0},  // Yellow
-    {255, 0, 255},  // Magenta
-    {0, 255, 255},  // Cyan
-    {255, 128, 0},  // Orange
-    {128, 0, 255},  // Purple
-    {0, 255, 128},  // Teal
-    {255, 255, 255},  // White
-    {128, 128, 128},  // Gray
-    {255, 128, 128},  // Light Red
-    {128, 255, 128},  // Light Green
-    {128, 128, 255},  // Light Blue
-    {255, 255, 128},  // Light Yellow
-    {255, 128, 255},  // Light Magenta
-    {128, 255, 255},  // Light Cyan
     {255, 192, 128},  // Light Orange
+    {255, 0, 0},    // Red
+    {255, 255, 255},  // White
     {192, 128, 255},  // Light Purple
+    {0, 255, 0},    // Green
+    {128, 128, 128},  // Gray
+    {0, 0, 255},    // Blue
+    {255, 128, 128},  // Light Red
+    {255, 255, 0},  // Yellow
+    {128, 255, 128},  // Light Green
+    {255, 0, 255},  // Magenta
+    {128, 128, 255},  // Light Blue
+    {0, 255, 255},  // Cyan
+    {255, 255, 128},  // Light Yellow
+    {255, 128, 0},  // Orange
+    {255, 128, 255},  // Light Magenta
+    {128, 0, 255},  // Purple
+    {128, 255, 255},  // Light Cyan
+    {0, 255, 128},  // Teal
     {128, 255, 192}   // Light Teal
   };
 
