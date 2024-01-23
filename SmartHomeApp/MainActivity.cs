@@ -178,7 +178,14 @@ namespace SmartHomeApp
         private void OnNumberSeekBarProgressChanged(object sender, SeekBar.ProgressChangedEventArgs e)
         {
             int selectedNumber = e.Progress + 1; // Add 1 to start from 1 instead of 0
-            selectedNumberTextView.Text = "Hustota LED: " + selectedNumber;
+            if(selectedNumber == 1)
+            {
+                selectedNumberTextView.Text = "Svietia všetky led.";
+            }
+            else
+            {
+                selectedNumberTextView.Text = $"Svieti každá {selectedNumber} led. ";
+            }
         }
         private void UpdateColorPreview()
         {
